@@ -19,16 +19,44 @@
             align-items: center;
             min-height: 100vh;
             overflow: hidden;
+            padding: 10px;
         }
 
         .banner {
-            width: 1200px;
+            width: 100%;
+            max-width: 1200px;
             height: 600px;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             position: relative;
             overflow: hidden;
             border-radius: 20px;
             box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+        }
+
+        /* Адаптивность для планшетов */
+        @media (max-width: 1024px) {
+            .banner {
+                height: 500px;
+            }
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+
+            .banner {
+                height: 700px;
+                border-radius: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                height: 650px;
+                border-radius: 10px;
+            }
         }
 
         /* ПРИНЦИП 1: БЛИЗОСТЬ - группировка элементов текста */
@@ -60,6 +88,65 @@
             font-size: 24px;
             font-weight: 400;
             margin-top: 25px;
+        }
+
+        @media (max-width: 1024px) {
+            .text-group {
+                left: 60px;
+                top: 80px;
+            }
+
+            .text-group h1 {
+                font-size: 56px;
+            }
+
+            .text-group h2 {
+                font-size: 38px;
+            }
+
+            .text-group .subtitle {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-group {
+                left: 50%;
+                top: 50px;
+                transform: translateX(-50%);
+                text-align: center;
+            }
+
+            .text-group h1 {
+                font-size: 48px;
+            }
+
+            .text-group h2 {
+                font-size: 32px;
+            }
+
+            .text-group .subtitle {
+                font-size: 18px;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-group {
+                top: 40px;
+            }
+
+            .text-group h1 {
+                font-size: 40px;
+            }
+
+            .text-group h2 {
+                font-size: 28px;
+            }
+
+            .text-group .subtitle {
+                font-size: 16px;
+            }
         }
 
         /* ПРИНЦИП 2: СХОДСТВО - одинаковые элементы-точки создают паттерн */
@@ -119,29 +206,78 @@
             white-space: nowrap;
         }
 
+        @media (max-width: 1024px) {
+            .feature-dots {
+                bottom: 60px;
+                left: 60px;
+                gap: 30px;
+            }
+
+            .feature-text {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .feature-dots {
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                max-width: 90%;
+            }
+
+            .feature-item {
+                flex-direction: row;
+                gap: 8px;
+            }
+
+            .dot {
+                width: 12px;
+                height: 12px;
+            }
+
+            .feature-text {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature-dots {
+                gap: 15px;
+            }
+
+            .feature-text {
+                font-size: 10px;
+            }
+        }
+
         /* ПРИНЦИП 3: НЕПРЕРЫВНОСТЬ - плавная линия направляет взгляд */
         .flow-line {
             position: absolute;
-            right: 100px;
+            left: 50%;
             top: 50%;
-            transform: translateY(-50%);
-            width: 400px;
-            height: 400px;
+            transform: translate(-50%, -50%);
+            width: 900px;
+            height: 500px;
             z-index: 5;
+            pointer-events: none;
         }
 
         .flow-line svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.3));
+            filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.2));
         }
 
         .curved-path {
             fill: none;
             stroke: #ff8c00;
-            stroke-width: 3;
+            stroke-width: 2;
             stroke-linecap: round;
-            opacity: 0.4;
+            opacity: 0.3;
             animation: drawLine 3s ease-in-out infinite;
         }
 
@@ -157,18 +293,116 @@
             }
         }
 
-        /* ПРИНЦИП 4: ЗАКРЫТИЕ - неполный контур телефона */
-        .phone-outline {
-            position: absolute;
-            right: 150px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 280px;
-            height: 560px;
-            z-index: 8;
+        @media (max-width: 1024px) {
+            .flow-line {
+                width: 700px;
+                height: 400px;
+            }
         }
 
-        .phone-outline svg {
+        @media (max-width: 768px) {
+            .flow-line {
+                width: 100%;
+                height: 600px;
+                top: 45%;
+            }
+
+            .curved-path {
+                opacity: 0.2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flow-line {
+                height: 500px;
+            }
+        }
+
+        /* ПРИНЦИП 4: ЗАКРЫТИЕ - реальное изображение телефона */
+        .phone-container {
+            position: absolute;
+            right: 120px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 320px;
+            height: 600px;
+            z-index: 8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-image {
+            width: 280px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(255, 140, 0, 0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(0) rotate(0deg);
+            }
+            75% {
+                transform: translateY(-10px) rotate(-1deg);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .phone-container {
+                right: 80px;
+                width: 280px;
+                height: 500px;
+            }
+
+            .phone-image {
+                width: 240px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .phone-container {
+                right: 50%;
+                top: 380px;
+                transform: translateX(50%);
+                width: 250px;
+                height: auto;
+            }
+
+            .phone-image {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .phone-container {
+                top: 350px;
+                width: 200px;
+            }
+
+            .phone-image {
+                width: 180px;
+            }
+        }
+
+        /* Декоративные линии вокруг телефона для закрытия */
+        .phone-outline-decor {
+            position: absolute;
+            right: 120px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 630px;
+            z-index: 7;
+        }
+
+        .phone-outline-decor svg {
             width: 100%;
             height: 100%;
         }
@@ -176,20 +410,50 @@
         .outline-segment {
             fill: none;
             stroke: #ff8c00;
-            stroke-width: 4;
+            stroke-width: 3;
             stroke-linecap: round;
-            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.5));
+            opacity: 0.5;
+            filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.3));
+        }
+
+        @media (max-width: 1024px) {
+            .phone-outline-decor {
+                right: 80px;
+                width: 300px;
+                height: 550px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .phone-outline-decor {
+                right: 50%;
+                top: 380px;
+                transform: translate(50%, 0);
+                width: 280px;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .phone-outline-decor {
+                top: 350px;
+                width: 240px;
+            }
+
+            .outline-segment {
+                stroke-width: 2;
+            }
         }
 
         /* Центральный градиент для акцента */
         .glow-center {
             position: absolute;
-            right: 200px;
+            right: 250px;
             top: 50%;
             transform: translateY(-50%);
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.12) 0%, transparent 70%);
             border-radius: 50%;
             z-index: 1;
             animation: glow 4s ease-in-out infinite;
@@ -203,6 +467,43 @@
             50% {
                 opacity: 1;
                 transform: translateY(-50%) scale(1.1);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .glow-center {
+                right: 180px;
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .glow-center {
+                right: 50%;
+                top: 380px;
+                transform: translateX(50%);
+                width: 300px;
+                height: 300px;
+            }
+
+            @keyframes glow {
+                0%, 100% {
+                    opacity: 0.5;
+                    transform: translateX(50%) scale(1);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translateX(50%) scale(1.1);
+                }
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glow-center {
+                top: 350px;
+                width: 250px;
+                height: 250px;
             }
         }
 
@@ -284,35 +585,78 @@
 
         <!-- ПРИНЦИП 3: НЕПРЕРЫВНОСТЬ -->
         <div class="flow-line">
-            <svg viewBox="0 0 400 400">
-                <path class="curved-path" d="M 50 50 Q 200 100 350 200 T 350 350" />
-                <path class="curved-path" d="M 80 80 Q 230 130 380 230 T 380 380" style="animation-delay: 0.5s; opacity: 0.3;" />
-                <path class="curved-path" d="M 20 20 Q 170 70 320 170 T 320 320" style="animation-delay: 1s; opacity: 0.2;" />
+            <svg viewBox="0 0 900 500">
+                <path class="curved-path" d="M 50 250 Q 300 150 450 250 T 850 250" />
+                <path class="curved-path" d="M 50 280 Q 300 180 450 280 T 850 280" style="animation-delay: 0.5s; opacity: 0.2;" />
+                <path class="curved-path" d="M 50 220 Q 300 120 450 220 T 850 220" style="animation-delay: 1s; opacity: 0.15;" />
             </svg>
         </div>
 
-        <!-- ПРИНЦИП 4: ЗАКРЫТИЕ -->
-        <div class="phone-outline">
-            <svg viewBox="0 0 280 560">
-                <!-- Верхний левый угол -->
-                <path class="outline-segment" d="M 40 10 L 80 10" />
-                <path class="outline-segment" d="M 10 40 L 10 120" />
-                
-                <!-- Правая сторона (прерывистая) -->
-                <path class="outline-segment" d="M 270 80 L 270 180" />
-                <path class="outline-segment" d="M 270 240 L 270 340" />
-                <path class="outline-segment" d="M 270 400 L 270 480" />
-                
-                <!-- Нижняя часть -->
-                <path class="outline-segment" d="M 240 550 L 180 550" />
-                <path class="outline-segment" d="M 120 550 L 60 550" />
-                
-                <!-- Левая сторона (частичная) -->
-                <path class="outline-segment" d="M 10 460 L 10 360" />
-                <path class="outline-segment" d="M 10 300 L 10 200" />
-                
-                <!-- Верхний правый -->
-                <path class="outline-segment" d="M 200 10 L 240 10" />
+        <!-- ПРИНЦИП 4: ЗАКРЫТИЕ - декоративные линии -->
+        <div class="phone-outline-decor">
+            <svg viewBox="0 0 350 630">
+                <!-- Верхние линии -->
+                <path class="outline-segment" d="M 60 20 L 120 20" />
+                <path class="outline-segment" d="M 230 20 L 290 20" />
+                <path class="outline-segment" d="M 20 60 L 20 140" />
+
+                <!-- Боковые линии -->
+                <path class="outline-segment" d="M 330 100 L 330 200" />
+                <path class="outline-segment" d="M 330 260 L 330 360" />
+                <path class="outline-segment" d="M 330 420 L 330 520" />
+
+                <!-- Нижние линии -->
+                <path class="outline-segment" d="M 260 610 L 180 610" />
+                <path class="outline-segment" d="M 120 610 L 60 610" />
+
+                <!-- Левые линии -->
+                <path class="outline-segment" d="M 20 490 L 20 390" />
+                <path class="outline-segment" d="M 20 330 L 20 230" />
+            </svg>
+        </div>
+
+        <!-- ПРИНЦИП 4: ЗАКРЫТИЕ - фото телефона -->
+        <div class="phone-container">
+            <img src="https://i.imgur.com/YourImageLink.png" alt="iPhone 17 Pro Max Orange" class="phone-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <!-- Fallback: встроенное изображение через data URI -->
+            <svg class="phone-image" style="display: none;" viewBox="0 0 280 560" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#ff9933;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ff6600;stop-opacity:1" />
+                    </linearGradient>
+                    <filter id="phoneShadow">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                        <feOffset dx="0" dy="10" result="offsetblur"/>
+                        <feFlood flood-color="#000000" flood-opacity="0.3"/>
+                        <feComposite in2="offsetblur" operator="in"/>
+                        <feMerge>
+                            <feMergeNode/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+
+                <!-- Корпус телефона -->
+                <rect x="20" y="20" width="240" height="520" rx="45" fill="url(#phoneGradient)" filter="url(#phoneShadow)"/>
+
+                <!-- Блок камер -->
+                <rect x="35" y="35" width="140" height="85" rx="20" fill="#ff7722" opacity="0.9"/>
+
+                <!-- Камеры -->
+                <circle cx="70" cy="60" r="22" fill="#1a1a1a"/>
+                <circle cx="70" cy="60" r="18" fill="#000"/>
+                <circle cx="70" cy="120" r="22" fill="#1a1a1a"/>
+                <circle cx="70" cy="120" r="18" fill="#000"/>
+                <circle cx="130" cy="90" r="22" fill="#1a1a1a"/>
+                <circle cx="130" cy="90" r="18" fill="#000"/>
+
+                <!-- Вспышка и сенсоры -->
+                <circle cx="155" cy="50" r="8" fill="#e0e0e0"/>
+                <circle cx="155" cy="85" r="5" fill="#333"/>
+
+                <!-- Блик на корпусе -->
+                <ellipse cx="140" cy="300" rx="60" ry="150" fill="#ffffff" opacity="0.1"/>
             </svg>
         </div>
 
