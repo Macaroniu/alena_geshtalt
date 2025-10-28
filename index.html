@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 17 Pro Max</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .banner {
+            width: 1200px;
+            height: 600px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.5);
+        }
+
+        /* ПРИНЦИП 1: БЛИЗОСТЬ - группировка элементов текста */
+        .text-group {
+            position: absolute;
+            left: 80px;
+            top: 120px;
+            z-index: 10;
+        }
+
+        .text-group h1 {
+            color: #ffffff;
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .text-group h2 {
+            color: #ff8c00;
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .text-group .subtitle {
+            color: #cccccc;
+            font-size: 24px;
+            font-weight: 400;
+            margin-top: 25px;
+        }
+
+        /* ПРИНЦИП 2: СХОДСТВО - одинаковые элементы-точки создают паттерн */
+        .feature-dots {
+            position: absolute;
+            bottom: 80px;
+            left: 80px;
+            display: flex;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 16px;
+            height: 16px;
+            background: #ff8c00;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .feature-item:nth-child(2) .dot {
+            animation-delay: 0.3s;
+        }
+
+        .feature-item:nth-child(3) .dot {
+            animation-delay: 0.6s;
+        }
+
+        .feature-item:nth-child(4) .dot {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        .feature-text {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* ПРИНЦИП 3: НЕПРЕРЫВНОСТЬ - плавная линия направляет взгляд */
+        .flow-line {
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 400px;
+            height: 400px;
+            z-index: 5;
+        }
+
+        .flow-line svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.3));
+        }
+
+        .curved-path {
+            fill: none;
+            stroke: #ff8c00;
+            stroke-width: 3;
+            stroke-linecap: round;
+            opacity: 0.4;
+            animation: drawLine 3s ease-in-out infinite;
+        }
+
+        @keyframes drawLine {
+            0% {
+                stroke-dasharray: 0 1000;
+            }
+            50% {
+                stroke-dasharray: 1000 0;
+            }
+            100% {
+                stroke-dasharray: 0 1000;
+            }
+        }
+
+        /* ПРИНЦИП 4: ЗАКРЫТИЕ - неполный контур телефона */
+        .phone-outline {
+            position: absolute;
+            right: 150px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 280px;
+            height: 560px;
+            z-index: 8;
+        }
+
+        .phone-outline svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .outline-segment {
+            fill: none;
+            stroke: #ff8c00;
+            stroke-width: 4;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.5));
+        }
+
+        /* Центральный градиент для акцента */
+        .glow-center {
+            position: absolute;
+            right: 200px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+
+        /* Декоративные элементы */
+        .bg-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border: 1px solid rgba(255, 140, 0, 0.1);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            bottom: -200px;
+            left: -150px;
+            animation-duration: 30s;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="bg-circles">
+            <div class="bg-circle"></div>
+            <div class="bg-circle"></div>
+        </div>
+
+        <!-- ПРИНЦИП 1: БЛИЗОСТЬ -->
+        <div class="text-group">
+            <h1>iPhone 17</h1>
+            <h2>Pro Max</h2>
+            <p class="subtitle">Оранжевый титан</p>
+        </div>
+
+        <!-- ПРИНЦИП 2: СХОДСТВО -->
+        <div class="feature-dots">
+            <div class="feature-item">
+                <div class="dot"></div>
+                <span class="feature-text">A19 Pro</span>
+            </div>
+            <div class="feature-item">
+                <div class="dot"></div>
+                <span class="feature-text">48MP камера</span>
+            </div>
+            <div class="feature-item">
+                <div class="dot"></div>
+                <span class="feature-text">5G</span>
+            </div>
+            <div class="feature-item">
+                <div class="dot"></div>
+                <span class="feature-text">Титановый корпус</span>
+            </div>
+        </div>
+
+        <!-- ПРИНЦИП 3: НЕПРЕРЫВНОСТЬ -->
+        <div class="flow-line">
+            <svg viewBox="0 0 400 400">
+                <path class="curved-path" d="M 50 50 Q 200 100 350 200 T 350 350" />
+                <path class="curved-path" d="M 80 80 Q 230 130 380 230 T 380 380" style="animation-delay: 0.5s; opacity: 0.3;" />
+                <path class="curved-path" d="M 20 20 Q 170 70 320 170 T 320 320" style="animation-delay: 1s; opacity: 0.2;" />
+            </svg>
+        </div>
+
+        <!-- ПРИНЦИП 4: ЗАКРЫТИЕ -->
+        <div class="phone-outline">
+            <svg viewBox="0 0 280 560">
+                <!-- Верхний левый угол -->
+                <path class="outline-segment" d="M 40 10 L 80 10" />
+                <path class="outline-segment" d="M 10 40 L 10 120" />
+                
+                <!-- Правая сторона (прерывистая) -->
+                <path class="outline-segment" d="M 270 80 L 270 180" />
+                <path class="outline-segment" d="M 270 240 L 270 340" />
+                <path class="outline-segment" d="M 270 400 L 270 480" />
+                
+                <!-- Нижняя часть -->
+                <path class="outline-segment" d="M 240 550 L 180 550" />
+                <path class="outline-segment" d="M 120 550 L 60 550" />
+                
+                <!-- Левая сторона (частичная) -->
+                <path class="outline-segment" d="M 10 460 L 10 360" />
+                <path class="outline-segment" d="M 10 300 L 10 200" />
+                
+                <!-- Верхний правый -->
+                <path class="outline-segment" d="M 200 10 L 240 10" />
+            </svg>
+        </div>
+
+        <div class="glow-center"></div>
+    </div>
+</body>
+</html>
