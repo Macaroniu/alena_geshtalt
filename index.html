@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone 17 Pro Max</title>
+    <title>iPhone 17 Pro Max - Гештальт принципы</title>
     <style>
         * {
             margin: 0;
@@ -33,6 +33,18 @@
             box-shadow: 0 30px 90px rgba(0,0,0,0.5);
         }
 
+        /* ПРИНЦИП 5: ФИГУРА И ФОН - четкое разделение */
+        .banner::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(10,10,10,0.8) 0%, transparent 100%);
+            z-index: 2;
+        }
+
         /* Адаптивность для планшетов */
         @media (max-width: 1024px) {
             .banner {
@@ -45,10 +57,15 @@
             body {
                 padding: 5px;
             }
-            
+
             .banner {
                 height: 700px;
                 border-radius: 15px;
+            }
+
+            .banner::before {
+                width: 100%;
+                background: linear-gradient(180deg, rgba(10,10,10,0.8) 0%, transparent 50%);
             }
         }
 
@@ -65,6 +82,19 @@
             left: 80px;
             top: 120px;
             z-index: 10;
+            /* ПРИНЦИП 6: ОБЩАЯ СУДЬБА - элементы анимируются вместе */
+            animation: slideInGroup 1.2s ease-out;
+        }
+
+        @keyframes slideInGroup {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .text-group h1 {
@@ -95,15 +125,15 @@
                 left: 60px;
                 top: 80px;
             }
-            
+
             .text-group h1 {
                 font-size: 56px;
             }
-            
+
             .text-group h2 {
                 font-size: 38px;
             }
-            
+
             .text-group .subtitle {
                 font-size: 20px;
             }
@@ -116,15 +146,26 @@
                 transform: translateX(-50%);
                 text-align: center;
             }
-            
+
+            @keyframes slideInGroup {
+                from {
+                    opacity: 0;
+                    transform: translate(-50%, -30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                }
+            }
+
             .text-group h1 {
                 font-size: 48px;
             }
-            
+
             .text-group h2 {
                 font-size: 32px;
             }
-            
+
             .text-group .subtitle {
                 font-size: 18px;
                 margin-top: 15px;
@@ -135,15 +176,15 @@
             .text-group {
                 top: 40px;
             }
-            
+
             .text-group h1 {
                 font-size: 40px;
             }
-            
+
             .text-group h2 {
                 font-size: 28px;
             }
-            
+
             .text-group .subtitle {
                 font-size: 16px;
             }
@@ -157,6 +198,19 @@
             display: flex;
             gap: 40px;
             z-index: 10;
+            /* ПРИНЦИП 6: ОБЩАЯ СУДЬБА */
+            animation: fadeInDots 1.5s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeInDots {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .feature-item {
@@ -212,7 +266,7 @@
                 left: 60px;
                 gap: 30px;
             }
-            
+
             .feature-text {
                 font-size: 12px;
             }
@@ -229,17 +283,28 @@
                 justify-content: center;
                 max-width: 90%;
             }
-            
+
+            @keyframes fadeInDots {
+                from {
+                    opacity: 0;
+                    transform: translate(-50%, 30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translate(-50%, 0);
+                }
+            }
+
             .feature-item {
                 flex-direction: row;
                 gap: 8px;
             }
-            
+
             .dot {
                 width: 12px;
                 height: 12px;
             }
-            
+
             .feature-text {
                 font-size: 11px;
             }
@@ -250,7 +315,7 @@
                 top: 180px;
                 gap: 15px;
             }
-            
+
             .feature-text {
                 font-size: 10px;
             }
@@ -308,7 +373,7 @@
                 height: 600px;
                 top: 45%;
             }
-            
+
             .curved-path {
                 opacity: 0.2;
             }
@@ -362,7 +427,7 @@
                 width: 280px;
                 height: 500px;
             }
-            
+
             .phone-image {
                 width: 240px;
             }
@@ -376,7 +441,7 @@
                 width: 250px;
                 height: auto;
             }
-            
+
             .phone-image {
                 width: 220px;
             }
@@ -387,7 +452,7 @@
                 top: 350px;
                 width: 200px;
             }
-            
+
             .phone-image {
                 width: 180px;
             }
@@ -441,9 +506,203 @@
                 top: 350px;
                 width: 240px;
             }
-            
+
             .outline-segment {
                 stroke-width: 2;
+            }
+        }
+
+        /* ПРИНЦИП 7: СИММЕТРИЯ - симметричные элементы воспринимаются как группа */
+        .symmetry-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .symmetry-line {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255,140,0,0.15) 50%, transparent 100%);
+            animation: symmetryPulse 3s ease-in-out infinite;
+        }
+
+        .symmetry-line.left {
+            left: 25%;
+            height: 80%;
+            top: 10%;
+        }
+
+        .symmetry-line.right {
+            right: 25%;
+            height: 80%;
+            top: 10%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes symmetryPulse {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .symmetry-line {
+                display: none;
+            }
+        }
+
+        /* ПРИНЦИП 8: ПРЕГНАНТНОСТЬ (простота) - простые геометрические формы */
+        .simple-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .shape-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 140, 0, 0.2);
+        }
+
+        .shape-circle.small {
+            width: 60px;
+            height: 60px;
+            top: 15%;
+            left: 15%;
+            animation: float-shape 4s ease-in-out infinite;
+        }
+
+        .shape-circle.medium {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            right: 35%;
+            animation: float-shape 5s ease-in-out infinite 1s;
+        }
+
+        .shape-square {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(255, 140, 0, 0.15);
+            border-radius: 10px;
+            top: 60%;
+            left: 20%;
+            animation: rotate-shape 8s linear infinite;
+        }
+
+        @keyframes float-shape {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes rotate-shape {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .shape-circle.small {
+                width: 40px;
+                height: 40px;
+                top: 10%;
+                left: 10%;
+            }
+
+            .shape-circle.medium {
+                width: 70px;
+                height: 70px;
+            }
+
+            .shape-square {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* ПРИНЦИП 9: ОБЩИЙ РЕГИОН - рамка создает единую область */
+        .content-frame {
+            position: absolute;
+            left: 40px;
+            top: 40px;
+            right: 40px;
+            bottom: 40px;
+            border: 1px solid rgba(255, 140, 0, 0.1);
+            border-radius: 15px;
+            z-index: 1;
+            pointer-events: none;
+            animation: framePulse 4s ease-in-out infinite;
+        }
+
+        @keyframes framePulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.005);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-frame {
+                left: 20px;
+                top: 20px;
+                right: 20px;
+                bottom: 20px;
+            }
+        }
+
+        /* ПРИНЦИП 10: СВЯЗНОСТЬ - соединяющие линии между элементами */
+        .connection-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .connection-lines svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .connect-path {
+            fill: none;
+            stroke: #ff8c00;
+            stroke-width: 1;
+            opacity: 0.2;
+            stroke-dasharray: 5, 5;
+            animation: dashMove 2s linear infinite;
+        }
+
+        @keyframes dashMove {
+            to {
+                stroke-dashoffset: -10;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .connect-path {
+                opacity: 0.1;
             }
         }
 
@@ -488,7 +747,7 @@
                 width: 300px;
                 height: 300px;
             }
-            
+
             @keyframes glow {
                 0%, 100% {
                     opacity: 0.5;
@@ -553,9 +812,38 @@
 </head>
 <body>
     <div class="banner">
+        <!-- Фон -->
         <div class="bg-circles">
             <div class="bg-circle"></div>
             <div class="bg-circle"></div>
+        </div>
+
+        <!-- ПРИНЦИП 9: ОБЩИЙ РЕГИОН -->
+        <div class="content-frame"></div>
+
+        <!-- ПРИНЦИП 7: СИММЕТРИЯ -->
+        <div class="symmetry-lines">
+            <div class="symmetry-line left"></div>
+            <div class="symmetry-line right"></div>
+        </div>
+
+        <!-- ПРИНЦИП 8: ПРЕГНАНТНОСТЬ -->
+        <div class="simple-shapes">
+            <div class="shape-circle small"></div>
+            <div class="shape-circle medium"></div>
+            <div class="shape-square"></div>
+        </div>
+
+        <!-- ПРИНЦИП 10: СВЯЗНОСТЬ -->
+        <div class="connection-lines">
+            <svg viewBox="0 0 1200 600" preserveAspectRatio="none">
+                <!-- Связь от текста к точкам -->
+                <path class="connect-path" d="M 180 240 L 120 480" />
+                <path class="connect-path" d="M 220 240 L 220 480" style="animation-delay: 0.3s;" />
+                <path class="connect-path" d="M 260 240 L 320 480" style="animation-delay: 0.6s;" />
+                <!-- Связь от точек к телефону -->
+                <path class="connect-path" d="M 350 520 Q 700 400 950 300" style="animation-delay: 0.9s;" />
+            </svg>
         </div>
 
         <!-- ПРИНЦИП 1: БЛИЗОСТЬ -->
@@ -601,16 +889,16 @@
                 <path class="outline-segment" d="M 60 20 L 120 20" />
                 <path class="outline-segment" d="M 230 20 L 290 20" />
                 <path class="outline-segment" d="M 20 60 L 20 140" />
-                
+
                 <!-- Боковые линии -->
                 <path class="outline-segment" d="M 330 100 L 330 200" />
                 <path class="outline-segment" d="M 330 260 L 330 360" />
                 <path class="outline-segment" d="M 330 420 L 330 520" />
-                
+
                 <!-- Нижние линии -->
                 <path class="outline-segment" d="M 260 610 L 180 610" />
                 <path class="outline-segment" d="M 120 610 L 60 610" />
-                
+
                 <!-- Левые линии -->
                 <path class="outline-segment" d="M 20 490 L 20 390" />
                 <path class="outline-segment" d="M 20 330 L 20 230" />
@@ -620,7 +908,7 @@
         <!-- ПРИНЦИП 4: ЗАКРЫТИЕ - фото телефона -->
         <div class="phone-container">
             <img src="https://i.imgur.com/YourImageLink.png" alt="iPhone 17 Pro Max Orange" class="phone-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <!-- Fallback: встроенное изображение через data URI -->
+            <!-- Fallback: встроенное изображение через SVG -->
             <svg class="phone-image" style="display: none;" viewBox="0 0 280 560" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -638,13 +926,13 @@
                         </feMerge>
                     </filter>
                 </defs>
-                
+
                 <!-- Корпус телефона -->
                 <rect x="20" y="20" width="240" height="520" rx="45" fill="url(#phoneGradient)" filter="url(#phoneShadow)"/>
-                
+
                 <!-- Блок камер -->
                 <rect x="35" y="35" width="140" height="85" rx="20" fill="#ff7722" opacity="0.9"/>
-                
+
                 <!-- Камеры -->
                 <circle cx="70" cy="60" r="22" fill="#1a1a1a"/>
                 <circle cx="70" cy="60" r="18" fill="#000"/>
@@ -652,11 +940,11 @@
                 <circle cx="70" cy="120" r="18" fill="#000"/>
                 <circle cx="130" cy="90" r="22" fill="#1a1a1a"/>
                 <circle cx="130" cy="90" r="18" fill="#000"/>
-                
+
                 <!-- Вспышка и сенсоры -->
                 <circle cx="155" cy="50" r="8" fill="#e0e0e0"/>
                 <circle cx="155" cy="85" r="5" fill="#333"/>
-                
+
                 <!-- Блик на корпусе -->
                 <ellipse cx="140" cy="300" rx="60" ry="150" fill="#ffffff" opacity="0.1"/>
             </svg>
